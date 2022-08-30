@@ -130,52 +130,12 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="/" class="brand-link">
             <span class="brand-text font-weight-light">CheckLister</span>
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Charts
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview" style="display: none;">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-user nav-icon"></i>
-                                    <p>ChartJS</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                           class="nav-link">
-                            <i class="fas fa-sign-out-alt nav-icon"></i>
-                        {{__('Logout')}}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
+        @include('partials.sidebar')
         <!-- /.sidebar -->
     </aside>
 
@@ -184,7 +144,7 @@
         @yield('content')
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
+    <footer class="main-footer" id="footer">
         <strong>Copyright &copy; 2014-{{ now()->format('Y') }} <a href="/">CheckLister</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
