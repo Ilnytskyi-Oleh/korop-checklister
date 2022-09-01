@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged as'),  }} <b class="text-red">{{ auth()->user()->name }}</b>
                 </div>
             </div>
         </div>

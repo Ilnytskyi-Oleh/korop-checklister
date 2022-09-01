@@ -6,24 +6,25 @@
                  with font-awesome or any other icon font library -->
 
 
+
+            @if(auth()->user()->is_admin)
             <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link">
                     <i class="fas fa-shield-alt nav-icon"></i>
                     <p>
-                        Dashboard
+                        {{__('Manage Checklists')}}
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-user nav-icon"></i>
-                            <p>Item 1</p>
+                        <a href="{{ route('admin.checklist_groups.create') }}" class="nav-link">
+                            <i class="fas fa-plus-circle nav-icon"></i>
+                            <p>{{__('New Checklist Group')}}</p>
                         </a>
                     </li>
                 </ul>
             </li>
-            @if(auth()->user()->is_admin)
             <li class="nav-item">
                 <a href="{{ route('admin.pages.index') }}"
                    class="nav-link">
