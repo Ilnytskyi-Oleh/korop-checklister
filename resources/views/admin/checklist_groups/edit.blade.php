@@ -32,15 +32,15 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('admin.checklist_groups.store') }}" method="POST">
+                <form action="{{ route('admin.checklist_groups.update', $checklistGroup) }}" method="POST">
+                    @method('PATCH')
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="{{__('Name...')}}">
+                        <input type="text" name="name" class="form-control" value="{{ old('name', $checklistGroup->name)  }}" placeholder="{{__('Name...')}}">
                     </div>
                     <div class="form-group">
-                        <input type="submit"  class="btn btn-primary" value="{{__('Add')}}">
+                        <input type="submit"  class="btn btn-primary" value="{{__('Update')}}">
                     </div>
-
                 </form>
             </div>
             <!-- /.row -->

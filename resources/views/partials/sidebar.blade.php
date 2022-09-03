@@ -5,26 +5,51 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
 
-
-
             @if(auth()->user()->is_admin)
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="fas fa-shield-alt nav-icon"></i>
                     <p>
-                        {{__('Manage Checklists')}}
-                        <i class="right fas fa-angle-left"></i>
+                        {{__('Checklists Groups')}}
+{{--                        <i class="right fas fa-angle-left"></i>--}}
                     </p>
                 </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="{{ route('admin.checklist_groups.create') }}" class="nav-link">
-                            <i class="fas fa-plus-circle nav-icon"></i>
-                            <p>{{__('New Checklist Group')}}</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
+
+            @foreach($checklistGroups as $checklistGroup)
+                    <li class="nav-item">
+                        <a href="{{ route('admin.checklist_groups.show', $checklistGroup) }}" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                {{ $checklistGroup->name }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            @foreach($checklistGroup->checklists as $checklist)
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.checklist_groups.checklists.show', [$checklistGroup, $checklist]) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>{{ $checklist->name }}</p>
+                                    </a>
+                                </li>
+                            @endforeach
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.checklist_groups.checklists.create', $checklistGroup) }}" class="nav-link">
+                                        <i class="fas fa-plus-circle nav-icon"></i>
+                                        <p>{{__('New Checklist')}}</p>
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            @endforeach
+                <li class="nav-item">
+                <a href="{{ route('admin.checklist_groups.create') }}" class="nav-link">
+                    <i class="fas fa-plus-circle nav-icon"></i>
+                    <p>{{__('New Checklist Group')}}</p>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="{{ route('admin.pages.index') }}"
                    class="nav-link">
@@ -36,7 +61,7 @@
             <li class="nav-item">
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
+                    document.getElementById('logout-form').submit();"
                    class="nav-link">
                     <i class="fas fa-sign-out-alt nav-icon"></i>
                     <p>{{__('Logout')}}</p>

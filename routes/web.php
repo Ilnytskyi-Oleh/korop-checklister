@@ -20,8 +20,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('da
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'admin','as' => 'admin.','middleware' => 'is_admin'], function(){
         Route::resource('pages', \App\Http\Controllers\Admin\PageController::class);
-        Route::resource('checklist_groups', \App\Http\Controllers\Admin\ChecklistGroup::class);
-        Route::resource('checklists', \App\Http\Controllers\Admin\Checklist::class);
+        Route::resource('checklist_groups', \App\Http\Controllers\Admin\ChecklistGroupController::class);
+        Route::resource('checklist_groups.checklists', \App\Http\Controllers\Admin\ChecklistController::class);
     });
 });
 
