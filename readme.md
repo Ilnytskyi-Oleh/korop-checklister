@@ -8,7 +8,8 @@ Docker environment required to run Laravel (based on official php and mysql dock
 [![Total Downloads](https://poser.pugx.org/systemsdk/docker-nginx-php-laravel/downloads)](https://packagist.org/packages/systemsdk/docker-nginx-php-laravel)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-[Source code](https://github.com/systemsdk/docker-nginx-php-laravel.git)
+[Source code](https://github.com/systemsdk/docker-nginx-php-laravel.git)    
+[Korop Example](https://github.com/LaravelDaily/Laravel-Checklister)
 
 ## Requirements
 * Docker version 18.06 or later
