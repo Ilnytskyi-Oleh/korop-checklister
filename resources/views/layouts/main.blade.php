@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
 
     @vite(['resources/js/app.js'])
-
+    @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -180,6 +180,7 @@
     $('.select2').select2()
 </script>
 
-
+@livewireScripts
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 </body>
 </html>
