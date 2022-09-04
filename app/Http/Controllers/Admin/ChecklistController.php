@@ -37,14 +37,11 @@ class ChecklistController extends Controller
 
     public function show(ChecklistGroup $checklistGroup, Checklist $checklist)
     {
+
+        $checklist = $checklist->load('tasks');
         return view('admin.checklists.show', compact('checklistGroup', 'checklist'));
     }
 
-
-    public function edit(ChecklistGroup $checklistGroup, Checklist $checklist)
-    {
-        return view('admin.checklists.edit', compact('checklistGroup', 'checklist'));
-    }
 
 
     public function update(StoreRequest $request, ChecklistGroup $checklistGroup, Checklist $checklist)
