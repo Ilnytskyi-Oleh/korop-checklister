@@ -21,13 +21,13 @@
                             <tbody wire:sortable="updateTaskOrder">
                             @foreach($tasks as $task)
                                 <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $task->name }}</td>
-                                    <td>{{ Str::limit($task->description, 20) }}</td>
+                                    <td wire:sortable.handle>{{ $loop->iteration }}</td>
+                                    <td wire:sortable.handle>{{ $task->name }}</td>
+                                    <td wire:sortable.handle>{!!   Str::limit($task->description, 20) !!}</td>
                                     <td class="text-right">
-                                        <a href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}"
+                                        <a !wire:sortable.handle href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}"
                                            class="btn btn-outline-primary">Edit</a>
-                                        <button
+                                        <button !wire:sortable.handle
                                             onclick="confirm('Are u sure?') ? document.getElementById('delete-task-{{$task->id}}').submit() : false"
                                             class="btn btn-outline-danger w-auto ml-auto mr-3"> Delete</button>
 

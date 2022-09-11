@@ -45,7 +45,7 @@
                         <label for="description" class="form-label">{{ __('Task description') }}</label>
                         <textarea name="description" id="description"
                                   class="form-control"
-                                  cols="30" rows="3">{{ old('description', $task->description) }}</textarea>
+                                  cols="30" rows="3">{!! old('description', $task->description)  !!} </textarea>
                     </div>
                     <div class="form-group">
                         <input type="submit"  class="btn btn-primary" value="{{__('Update task')}}">
@@ -56,4 +56,14 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+@endsection
+
+@section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#description' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection
