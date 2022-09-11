@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Page\UpdateRequest;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -24,7 +26,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -49,27 +51,18 @@ class PageController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+
+    public function edit(Page $page)
     {
-        //
+        return view('admin.pages.edit', compact('page'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(UpdateRequest $request, Page $page)
     {
-        //
+        $page->update($request->validated());
+        return redirect()->route('admin.pages.edit', $page)->with('status', 'Page updated!');
     }
 
     /**

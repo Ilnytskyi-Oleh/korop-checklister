@@ -50,13 +50,15 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{{ route('admin.pages.index') }}"
-                   class="nav-link">
-                    <i class="far fa-file-alt nav-icon"></i>
-                    <p>{{__('Pages')}}</p>
-                </a>
-            </li>
+            @foreach(\App\Models\Page::all() as $page)
+                <li class="nav-item">
+                    <a href="{{ route('admin.pages.edit', $page) }}"
+                       class="nav-link">
+                        <i class="far fa-file-alt nav-icon"></i>
+                        <p>{{$page->title}}</p>
+                    </a>
+                </li>
+            @endforeach
             @endif
             <li class="nav-item">
                 <a href="{{ route('logout') }}"

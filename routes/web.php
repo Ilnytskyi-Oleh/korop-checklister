@@ -19,7 +19,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('da
 
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'admin','as' => 'admin.','middleware' => 'is_admin'], function(){
-        Route::resource('pages', \App\Http\Controllers\Admin\PageController::class);
+        Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)
+        ->only(['edit', 'update']);
         Route::resource('checklist_groups', \App\Http\Controllers\Admin\ChecklistGroupController::class);
         Route::resource('checklist_groups.checklists', \App\Http\Controllers\Admin\ChecklistController::class);
         Route::resource('checklists.tasks', \App\Http\Controllers\Admin\TaskController::class);

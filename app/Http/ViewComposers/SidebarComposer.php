@@ -10,8 +10,8 @@ class SidebarComposer
 {
     public function compose(View $view)
     {
-        $checklistGroup = ChecklistGroup::with('checklists')->get();
+        $checklistGroups = ChecklistGroup::with('checklists')->get();
 
-        return $view->with('checklistGroups', $checklistGroup);
+        return $view->with('checklistGroups', $checklistGroups);
     }
 }
