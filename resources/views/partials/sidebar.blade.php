@@ -60,18 +60,18 @@
                 </li>
             @endforeach
             @endif
-            <li class="nav-item">
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"
-                   class="nav-link">
-                    <i class="fas fa-sign-out-alt nav-icon"></i>
-                    <p>{{__('Logout')}}</p>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="{{ route('logout') }}"--}}
+{{--                   onclick="event.preventDefault();--}}
+{{--                    document.getElementById('logout-form').submit();"--}}
+{{--                   class="nav-link">--}}
+{{--                    <i class="fas fa-sign-out-alt nav-icon"></i>--}}
+{{--                    <p>{{__('Logout')}}</p>--}}
+{{--                </a>--}}
+{{--                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+{{--                    @csrf--}}
+{{--                </form>--}}
+{{--            </li>--}}
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
