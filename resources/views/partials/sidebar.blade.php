@@ -22,10 +22,10 @@
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
                                 {{ $checklistGroup->name }}
-                                <i class="right fas fa-angle-left"></i>
+{{--                                <i class="right fas fa-angle-left"></i>--}}
                             </p>
                         </a>
-                        <ul class="nav nav-treeview" style="display: none;">
+                        <ul class="nav " >
                             @foreach($checklistGroup->checklists as $checklist)
                                 <li class="nav-item">
                                     <a href="{{ route('admin.checklist_groups.checklists.show', [$checklistGroup, $checklist]) }}" class="nav-link">
@@ -43,12 +43,18 @@
                         </ul>
                     </li>
             @endforeach
-                <li class="nav-item">
+            <li class="nav-item">
                 <a href="{{ route('admin.checklist_groups.create') }}" class="nav-link">
                     <i class="fas fa-plus-circle nav-icon"></i>
                     <p>{{__('New Checklist Group')}}</p>
                 </a>
             </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                        <i class="fas fa-user nav-icon"></i>
+                        <p>{{__('Users')}}</p>
+                    </a>
+                </li>
 
             @foreach(\App\Models\Page::all() as $page)
                 <li class="nav-item">
@@ -60,18 +66,6 @@
                 </li>
             @endforeach
             @endif
-{{--            <li class="nav-item">--}}
-{{--                <a href="{{ route('logout') }}"--}}
-{{--                   onclick="event.preventDefault();--}}
-{{--                    document.getElementById('logout-form').submit();"--}}
-{{--                   class="nav-link">--}}
-{{--                    <i class="fas fa-sign-out-alt nav-icon"></i>--}}
-{{--                    <p>{{__('Logout')}}</p>--}}
-{{--                </a>--}}
-{{--                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-{{--                    @csrf--}}
-{{--                </form>--}}
-{{--            </li>--}}
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

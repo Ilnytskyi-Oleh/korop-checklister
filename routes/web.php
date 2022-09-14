@@ -20,7 +20,7 @@ Route::get('/', function (){
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
-//    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
     Route::get('/welcome', [\App\Http\Controllers\Front\PageController::class, 'welcome'])->name('welcome');
     Route::get('/consultation', [\App\Http\Controllers\Front\PageController::class, 'consultation'])->name('consultation');
     Route::group(['prefix' => 'admin','as' => 'admin.','middleware' => 'is_admin'], function(){
@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('checklist_groups', \App\Http\Controllers\Admin\ChecklistGroupController::class);
         Route::resource('checklist_groups.checklists', \App\Http\Controllers\Admin\ChecklistController::class);
         Route::resource('checklists.tasks', \App\Http\Controllers\Admin\TaskController::class);
+        Route::get('users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
     });
 });
 
