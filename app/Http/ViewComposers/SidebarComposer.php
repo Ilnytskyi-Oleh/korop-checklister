@@ -10,7 +10,9 @@ class SidebarComposer
 {
     public function compose(View $view)
     {
-        $checklistGroups = ChecklistGroup::with('checklists')->get();
+        $checklistGroups = ChecklistGroup::with(['checklists' => function($query){
+            $query->whereNull('user_id');
+        }])->get();
 
         return $view->with('checklistGroups', $checklistGroups);
     }
