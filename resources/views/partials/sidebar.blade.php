@@ -11,7 +11,6 @@
                     <i class="fas fa-shield-alt nav-icon"></i>
                     <p>
                         {{__('Checklists Groups')}}
-{{--                        <i class="right fas fa-angle-left"></i>--}}
                     </p>
                 </a>
             </li>
@@ -22,7 +21,6 @@
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
                                 {{ $checklistGroup->name }}
-{{--                                <i class="right fas fa-angle-left"></i>--}}
                             </p>
                         </a>
                         <ul class="nav " >
@@ -65,6 +63,30 @@
                     </a>
                 </li>
             @endforeach
+            @else
+                @foreach($checklistGroups as $checklistGroup)
+                    @if($checklistGroup->checklists->count())
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                {{ $checklistGroup->name }}
+                            </p>
+                        </a>
+                        <ul class="nav " >
+
+                                @foreach($checklistGroup->checklists as $checklist)
+                                    <li class="nav-item">
+                                        <a href="{{ route('users.checklists.show', [ $checklist]) }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>{{ $checklist->name }}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                        </ul>
+                    </li>
+                    @endif
+                @endforeach
             @endif
         </ul>
     </nav>

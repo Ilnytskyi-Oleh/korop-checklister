@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 
+    Route::get('checklists/{checklist}', [\App\Http\Controllers\User\ChecklistController::class,'show'])
+        ->name('users.checklists.show');
     Route::get('/welcome', [\App\Http\Controllers\Front\PageController::class, 'welcome'])->name('welcome');
     Route::get('/consultation', [\App\Http\Controllers\Front\PageController::class, 'consultation'])->name('consultation');
     Route::group(['prefix' => 'admin','as' => 'admin.','middleware' => 'is_admin'], function(){
