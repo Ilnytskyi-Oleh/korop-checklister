@@ -14,6 +14,20 @@ class SidebarComposer
             $query->whereNull('user_id');
         }])->get();
 
-        return $view->with('checklistGroups', $checklistGroups);
+        $groups = [];
+        foreach ($checklistGroups as $group){
+            $group['is_new'] = true;
+            $group['is_updated'] = false;
+            foreach ($group->checklists as $checklist){
+                $checklist['is_new'] = false;
+                $checklist['is_updated'] = false;
+                $checklist['tasks'] = 1;
+                $checklist['completed_tasks'] = 0;
+            }
+
+            $groups[]= $group;
+        }
+
+        return $view->with('checklistGroups', $groups);
     }
 }

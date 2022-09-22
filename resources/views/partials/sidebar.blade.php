@@ -28,7 +28,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin.checklist_groups.checklists.show', [$checklistGroup, $checklist]) }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>{{ $checklist->name }}</p>
+                                        <p>{{ $checklist->name }} </p>
                                     </a>
                                 </li>
                             @endforeach
@@ -71,15 +71,25 @@
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
                                 {{ $checklistGroup->name }}
+                                @if($checklistGroup->is_new)
+                                    <span class="badge badge-info right">NEW</span>
+                                @elseif($checklistGroup->is_updated)
+                                    <span class="badge badge-info right">UPDATED</span>
+                                @endif
                             </p>
                         </a>
                         <ul class="nav " >
-
                                 @foreach($checklistGroup->checklists as $checklist)
                                     <li class="nav-item">
                                         <a href="{{ route('users.checklists.show', [ $checklist]) }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>{{ $checklist->name }}</p>
+                                            <p>{{ $checklist->name }}
+                                                @if($checklist->is_new)
+                                                    <span class="badge badge-info right">NEW</span>
+                                                @elseif($checklist->is_updated)
+                                                    <span class="badge badge-info right">UPDATED</span>
+                                                @endif
+                                            </p>
                                         </a>
                                     </li>
                                 @endforeach
