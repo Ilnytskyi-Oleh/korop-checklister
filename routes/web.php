@@ -17,7 +17,7 @@ Route::redirect('/', 'welcome');
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['auth', 'save_last_action_timestamp']], function(){
 
     Route::get('checklists/{checklist}', [\App\Http\Controllers\User\ChecklistController::class,'show'])
         ->name('users.checklists.show');

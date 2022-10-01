@@ -15,12 +15,19 @@ class SidebarComposer
         }])->get();
 
         $groups = [];
+        $last_Action = auth()->user()->last_action_at;
+        if(is_null($last_Action)) {
+            $last_Action = now()->subYears(5);
+        }
         foreach ($checklistGroups as $group){
-            $group['is_new'] = true;
-            $group['is_updated'] = false;
+            $group['is_new'] = $group->created_at->greaterThan($last_Action);
+            $group['is_updated'] = !($group['is_new']) && $group->updated_at->greaterThan($last_Action);
             foreach ($group->checklists as $checklist){
-                $checklist['is_new'] = false;
-                $checklist['is_updated'] = false;
+                $checklist['is_new'] = !$group['is_new']
+                                        && $checklist->created_at->greaterThan($last_Action);
+                $checklist['is_updated'] = !$group['is_updated'] &&
+                                            !($checklist['is_new'])
+                                            && $checklist->updated_at->greaterThan($last_Action);
                 $checklist['tasks'] = 1;
                 $checklist['completed_tasks'] = 0;
             }

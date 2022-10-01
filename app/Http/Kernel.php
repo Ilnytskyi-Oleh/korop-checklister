@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http;
 
 
+use App\Http\Middleware\SaveLastActionMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_admin' =>  \App\Http\Middleware\IsAdmin::class,
+        'save_last_action_timestamp' =>  SaveLastActionMiddleware::class,
     ];
 }

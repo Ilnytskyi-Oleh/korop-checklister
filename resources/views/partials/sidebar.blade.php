@@ -79,20 +79,20 @@
                             </p>
                         </a>
                         <ul class="nav " >
-                                @foreach($checklistGroup->checklists as $checklist)
-                                    <li class="nav-item">
-                                        <a href="{{ route('users.checklists.show', [ $checklist]) }}" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>{{ $checklist->name }}
-                                                @if($checklist->is_new)
-                                                    <span class="badge badge-info right">NEW</span>
-                                                @elseif($checklist->is_updated)
-                                                    <span class="badge badge-info right">UPDATED</span>
-                                                @endif
-                                            </p>
-                                        </a>
-                                    </li>
-                                @endforeach
+                            @foreach($checklistGroup->checklists as $checklist)
+                                <li class="nav-item">
+                                    <a href="{{ route('users.checklists.show', [ $checklist]) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>{{ $checklist->name }}
+                                            @if($checklist->is_new)
+                                                <span class="badge badge-info right">NEW</span>
+                                            @elseif($checklist->is_updated)
+                                                <span class="badge badge-info right">UPDATED</span>
+                                            @endif
+                                        </p>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     @endif
