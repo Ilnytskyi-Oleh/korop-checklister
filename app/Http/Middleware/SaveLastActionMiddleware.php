@@ -21,7 +21,7 @@ class SaveLastActionMiddleware
 
     public function terminate($request, $response)
     {
-        if($request->check()) {
+        if(auth()->check()) {
             $request->user()->update(['last_action_at' => now()]);
         }
     }
