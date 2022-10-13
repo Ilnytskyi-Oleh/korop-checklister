@@ -13,7 +13,7 @@ class Task extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['name', 'description', 'checklist_id', 'position'];
+    protected $fillable = ['name', 'description', 'checklist_id', 'position', 'user_id', 'task_id', 'completed_at'];
 
     public function registerMediaConversions(Media $media = null): void
     {
