@@ -10,7 +10,7 @@
                 </td>
                 <td >
                     <a class="collapsed" data-toggle="collapse" href="#{{$task->name}}_{{$task->id}}" aria-expanded="false">
-                        {{ $task->name }}
+                        {{ $task->name ?? ' ' }}
                     </a>
                 </td>
                 <td></td>

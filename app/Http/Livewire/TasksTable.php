@@ -11,7 +11,7 @@ class TasksTable extends Component
 
     public function render()
     {
-        $tasks = $this->checklist->tasks()->orderBy('position')->get();
+        $tasks = $this->checklist->tasks()->where('user_id', NULL)->orderBy('position')->get();
         return view('livewire.tasks-table', compact('tasks'));
     }
 

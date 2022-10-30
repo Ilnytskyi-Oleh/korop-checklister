@@ -27,6 +27,7 @@ class TaskListComponent extends Component
     public function complete_task($task_id)
     {
         $task = Task::find($task_id);
+
         if($task){
             $user_task = Task::where('task_id', $task_id)->first();
             if($user_task){
@@ -40,7 +41,6 @@ class TaskListComponent extends Component
                 $user_task->completed_at = now();
                 $user_task->save();
             }
-
         }
     }
 }
